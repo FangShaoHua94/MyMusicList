@@ -73,6 +73,44 @@ app.delete('/myMusic/:musicId', (req, res) => {
 })
 
 
+// Music folders
+app.get('/myMusicFolder', (req, res) => {
+    MusicFolder.find({
+    }).then((myMusicFolders) => {
+        res.send(myMusicFolders);
+    }).catch((error) => {
+        res.status(404).send(error);
+    })
+})
+
+app.post('/myMusicFolder', (req, res) => {
+    const musicFolder = req.body;
+    const newMusicFolder = new MusicFolder(musicFolder);
+    newMusicFolder.save().then((allMusicFolders) => {
+        res.send(allMusicFolders);
+    }).catch((error) => {
+        res.send(error);
+    })
+})
+
+app.patch('/myMusicFolder/:musicFolderId', (req, res) => {
+    MusicFolder.findOneAndUpdate({_id: req.params.musicFolderId}, { $set: req.body })
+    .then(() => {
+        res.send({ 'message': 'updated successfully'});
+    }).catch((error) => {
+        res.send(error);
+    })
+})
+
+app.delete('/myMusicFolder/:musicFolderId', (req, res) => {
+    MusicFolder.findByIdAndRemove({_id: req.params.musicFolderId})
+    .then((removedMusicFolder) => {
+        res.send(removedMusicFolder);
+    }).catch((error) => {
+        res.send(error);
+    })
+})
+
 app.get('/', (req, res) => {
     res.send("Hello to MY MUSIC LIST api");
 })
