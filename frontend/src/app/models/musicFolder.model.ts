@@ -1,4 +1,4 @@
-export class Music {
+export class MusicFolder {
     _id: Number;
     title: String;
     genre: String;

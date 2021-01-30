@@ -1,0 +1,11 @@
+@import "../../../main-styles.scss";
+
+.navbar {
+    background-color: $primary;
+    font-family: "Londrina Solid", cursive;
+    font-size: larger;
+
+    .navbar-brand {
+        margin-right: 0rem;
+    }
+}

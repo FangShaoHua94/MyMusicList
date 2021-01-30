@@ -1,1 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
+@import './main-styles.scss';
+// main style first to override the bootstrap
+@import '../node_modules/bootstrap-scss/bootstrap.scss';
+
