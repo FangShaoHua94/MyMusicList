@@ -1,0 +1,28 @@
+<div class="table-wrapper">
+    <table class="table table-dark table-hover">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Title</th>
+                <th scope="col">Artist</th>
+                <th scope="col">Duration</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody *ngFor="let song of songs; let i = index">
+            <tr>
+                <th scope="row">{{ i }}</th>
+                <td>{{ song.title }}</td>
+                <td>{{ song.artist }}</td>
+                <td>{{ song.duration }}</td>
+                <td class="icons">
+                    <a href="{{song.youtubeLink}}"><i class="fab fa-youtube"></i></a>
+                    <i class="fas fa-edit"></i>
+                    <i class="fas fa-trash"></i>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<!-- <button type="button" class="btn btn-success">+ Song</button> -->

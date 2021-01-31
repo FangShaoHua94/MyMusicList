@@ -1,0 +1,29 @@
+@import '../../../main-styles.scss';
+@import url('https://fonts.googleapis.com/css2?family=ZCOOL+QingKe+HuangYou&display=swap');
+
+.table-wrapper {
+    max-height: 100%;
+    width: 100%;
+    overflow: auto;
+    display: inline-block;
+
+    a {
+        color: $secondary;
+
+        &:hover {
+            color: lighten($secondary, 10%);
+        }
+    }
+
+    .icons > *{
+        margin: 0 0.5rem 0 0;
+    }
+
+    thead {
+        font-size: x-large;
+    }
+
+    tbody {
+        font-family: 'ZCOOL QingKe HuangYou', cursive;
+    }
+}

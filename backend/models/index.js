@@ -1,9 +1,9 @@
 const { User } = require('./user.model');
-const { Music } = require('./music.model');
-const { MusicFolder } = require('./musicFolder.model');
+const { Song } = require('./Song.model');
+const { PlayList } = require('./playList.model');
 
 module.exports = {
-    Music,
-    MusicFolder,
+    Song,
+    PlayList,
     User
 }

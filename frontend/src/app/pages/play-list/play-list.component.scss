@@ -1,0 +1,19 @@
+.main-container{
+    height: 100%;
+    .play-list-container {
+        height: 90%;
+        .icons > *{
+            margin: 0 0.2rem;
+        }
+
+        .play-list {
+            height: 80px;
+            width: 80px;
+            border-width: 3px;
+
+            .play-list-title{
+                max-width: 100%;
+            }
+        }
+    }
+}

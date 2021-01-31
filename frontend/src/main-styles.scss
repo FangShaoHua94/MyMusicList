@@ -1,12 +1,37 @@
-@import url('https://fonts.googleapis.com/css2?family=Londrina+Solid&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Londrina+Solid&display=swap");
 
 $purple: #211331;
 $pink: #f2005e;
 
 $primary: $purple;
+$secondary: $pink;
 
-$family-sans-serif: 'Londrina Solid', cursive;
+$navbar-dark-color: rgba($secondary, 0.5);
+$navbar-dark-hover-color: rgba($secondary, 0.75);
+$navbar-dark-active-color: $secondary;
+$navbar-dark-disabled-color: rgba($secondary, 0.25);
 
-a {
-    color: $pink;
+$table-dark-color: $secondary;
+$table-dark-bg: $primary;
+$table-dark-hover-color: $table-dark-color;
+
+body {
+    font-family: "Londrina Solid", cursive !important;
+}
+
+::-webkit-scrollbar {
+    width: 13px;
+    height: 13px;
+}
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(13deg, #f2005e 14%, #211331 64%);
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(17deg, #f2005e 14%, #211331 63%);
+}
+::-webkit-scrollbar-track {
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: inset 7px 10px 12px #f0f0f0;
 }

@@ -1,28 +1,29 @@
-<div class="main-view">
-    <nav class="navbar navbar-expand navbar-dark flex-column flex-md-row bd-navbar">
-        <a class="navbar-brand" href="#">
-            <img src="../../../assets/svg/Disk.svg" width="40" height="40" class="d-inline-block align-top" alt="">
-        </a>
+<!-- navbar for responsive collapsing-->
+<!-- flex-column for general -->
+<!-- flex-md-row for non-mobile, medium screen -->
+<nav class="main-container navbar bg-primary navbar-expand navbar-dark flex-column flex-md-row">
+    <a class="navbar-brand d-inline-block" href="#">
+        <i class="fas fa-music"></i>
+        Music Space
+    </a>
 
-        <div class="navbar-nav-scroll">
-            <ul class="navbar-nav bd-navbar-nav flex-row">
-                <li class="nav-item">
-                    <a class="nav-link" href="#">MyMusicList</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Link2</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
+    <ul class="navbar-nav flex-row">
+        <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Link2</a>
+        </li>
+        <li class="nav-item ml-auto">
+            <a class="nav-link" href="#">Link3</a>
+        </li>
+    </ul>
 
-    <router-outlet></router-outlet>
+    <ul class="navbar-nav flex-row ml-auto">
+        <li class="nav-item ">
+            <a class="nav-link" href="#">Log Out <i class="fas fa-sign-out-alt"></i></a>
+        </li>
+    </ul>
+</nav>
 
-    <div class="footer-container">
-        <div class="footer-icon"></div>
-        <div class="footer-note">MyMusicList</div>
-    </div>
-</div>
+<router-outlet></router-outlet>
