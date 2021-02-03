@@ -2,6 +2,7 @@
 
 $purple: #211331;
 $pink: #f2005e;
+$green: #28a745;
 
 $primary: $purple;
 $secondary: $pink;
@@ -14,6 +15,13 @@ $navbar-dark-disabled-color: rgba($secondary, 0.25);
 $table-dark-color: $secondary;
 $table-dark-bg: $primary;
 $table-dark-hover-color: $table-dark-color;
+
+$modal-content-border-color:        rgba($secondary, 1);
+$modal-content-box-shadow-xs:       0 .25rem .5rem rgba($secondary, .5);
+$modal-content-box-shadow-sm-up:    0 .5rem 1rem rgba($secondary, .5);
+
+
+
 
 body {
     font-family: "Londrina Solid", cursive !important;

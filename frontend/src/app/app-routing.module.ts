@@ -6,6 +6,8 @@ import { MusicPageComponent } from './pages/music-page/music-page.component';
 const routes: Routes = [
   {path: '', component:MainPageComponent, children:[
     {path: '', component: MusicPageComponent},
+    {path: 'playLists', component: MusicPageComponent},
+    {path: 'playLists/:playListId', component: MusicPageComponent},
   ]}
 ];
 

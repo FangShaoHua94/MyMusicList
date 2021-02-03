@@ -11,14 +11,19 @@ export class SongService {
 
   constructor(private webRequestService: WebRequestService) {
     this.API_SUB_ROOT_URL = 'mySongs';
-   }
+  }
 
   getAllSongs() {
     return this.webRequestService.get(this.API_SUB_ROOT_URL);
   }
 
-  createSong(Song: Song) {
-    return this.webRequestService.post(this.API_SUB_ROOT_URL, { Song });
+  getSongs(playListId: Number) {
+    return this.webRequestService.get(`myPlayLists/${playListId}/${this.API_SUB_ROOT_URL}`);
+  }
+
+  createSong(song: Song) {
+    console.log(song)
+    return this.webRequestService.post(this.API_SUB_ROOT_URL, song);
   }
 
   updateSong(songId: Number, updatedSong: Song) {

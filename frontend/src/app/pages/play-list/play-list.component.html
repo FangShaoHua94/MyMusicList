@@ -1,6 +1,9 @@
 <div class="main-container d-flex flex-column py-2">
     <div class="play-list-container d-flex flex-wrap flex-row overflow-auto align-content-start">
-        <div *ngFor="let playList of playLists" class="play-list m-1 d-flex flex-column align-items-center border border-secondary rounded p-1">
+        <div *ngFor="let playList of playLists" 
+        class="play-list m-1 d-flex flex-column align-items-center border border-secondary rounded p-1"
+        [routerLink]="['/playLists', playList._id]"
+        routerLinkActive="is-active">
             <i class="fas fa-2x fa-compact-disc"></i>
             <div class="play-list-title d-inline-block text-truncate">{{playList.title}}</div>
             <div class="icons d-flex flex-row justify-content-center">
@@ -11,6 +14,5 @@
     </div>
     <span class="flex-grow-1 d-flex justify-content-around my-1">
         <button type="button" class="btn btn-success">+ Play List</button>
-        <button type="button" class="btn btn-success">+ Song</button>
     </span>
 </div>

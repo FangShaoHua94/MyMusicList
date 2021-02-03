@@ -12,9 +12,9 @@ const playListSchema = mongoose.Schema({
     },
 },
     {
-        collection: 'playList'
+        collection: 'PlayList'
     });
 
-const PlayList = mongoose.model('playList', playListSchema);
+const PlayList = mongoose.model('PlayList', playListSchema);
 
 module.exports = { PlayList };

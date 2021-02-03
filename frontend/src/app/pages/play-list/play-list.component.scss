@@ -1,18 +1,50 @@
-.main-container{
+@import "../../../main-styles.scss";
+
+.main-container {
     height: 100%;
     .play-list-container {
         height: 90%;
-        .icons > *{
+        .icons > * {
             margin: 0 0.2rem;
         }
 
         .play-list {
             height: 80px;
             width: 80px;
-            border-width: 3px;
+            cursor: pointer;
 
-            .play-list-title{
+            &:focus {
+                outline: none;
+            }
+
+            .play-list-title {
                 max-width: 100%;
+            }
+
+            &.is-active {
+                .fa-compact-disc {
+
+                    -webkit-animation: spin 4s linear infinite;
+                    -moz-animation: spin 4s linear infinite;
+                    animation: spin 4s linear infinite;
+
+                    @-moz-keyframes spin {
+                        100% {
+                            -moz-transform: rotate(360deg);
+                        }
+                    }
+                    @-webkit-keyframes spin {
+                        100% {
+                            -webkit-transform: rotate(360deg);
+                        }
+                    }
+                    @keyframes spin {
+                        100% {
+                            -webkit-transform: rotate(360deg);
+                            transform: rotate(360deg);
+                        }
+                    }
+                }
             }
         }
     }

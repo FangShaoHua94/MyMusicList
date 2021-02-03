@@ -17,14 +17,14 @@ export class WebRequestService {
   }
 
   post(uri: string, payload: Object) {
-    return this.http.post(`${this.API_ROOT_URL}/${uri}`, payload);
+    return this.http.post(`${this.API_ROOT_URL}/${uri}`, payload).subscribe();
   }
 
   patch(uri: string, payload: Object) {
-    return this.http.patch(`${this.API_ROOT_URL}/${uri}`, payload);
+    return this.http.patch(`${this.API_ROOT_URL}/${uri}`, payload).subscribe(data => console.log(data));
   }
 
   delete(uri: string) {
-    return this.http.delete(`${this.API_ROOT_URL}/${uri}`);
+    return this.http.delete(`${this.API_ROOT_URL}/${uri}`).subscribe(data => console.log(data));
   }
 }

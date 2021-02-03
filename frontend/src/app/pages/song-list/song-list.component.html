@@ -6,7 +6,10 @@
                 <th scope="col">Title</th>
                 <th scope="col">Artist</th>
                 <th scope="col">Duration</th>
-                <th scope="col"></th>
+                <th scope="col">
+                    <button type="button" class="btn btn-success py-0 text-nowrap" (click)="openModal()">+ Song</button>
+                    <app-song-detail [(toDisplay)]="toDisplay"></app-song-detail>
+                </th>
             </tr>
         </thead>
         <tbody *ngFor="let song of songs; let i = index">
@@ -25,4 +28,3 @@
     </table>
 </div>
 
-<!-- <button type="button" class="btn btn-success">+ Song</button> -->
