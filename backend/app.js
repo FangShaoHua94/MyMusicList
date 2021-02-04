@@ -57,9 +57,9 @@ app.post('/mySongs', (req, res) => {
 })
 
 app.patch('/mySongs/:songId', (req, res) => {
-    Song.findOneAndUpdate({ _id: req.params.songId }, { $set: req.body })
-        .then(() => {
-            res.send({ 'message': 'updated successfully' });
+    Song.findOneAndUpdate({ _id: req.params.songId }, { $set: req.body }, {new: true})
+        .then((updatedSong) => {
+            res.send(updatedSong);
         }).catch((error) => {
             res.send(error);
         })

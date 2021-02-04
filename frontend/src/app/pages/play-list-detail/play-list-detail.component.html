@@ -1,0 +1,25 @@
+<div class="form-container justify-content-around d-flex p-3">
+    <form #playListForm="ngForm" (ngSubmit)="onSubmit(playListForm)" class="col-5 p-2 m-2 bg-primary h-80">
+        <h2 class="text-secondary">{{title}}</h2>
+        <div class="form-row py-1">
+            <div class="col">
+                <input type="text" name="title" class="form-control" placeholder="Title" [ngModel]="playList? playList.title: ''" required>
+            </div>
+        </div>
+        <div class="form-row py-1">
+            <div class="col">
+                <input type="text" name="genre" class="form-control" placeholder="Genre" [ngModel]="playList? playList.genre: ''" >
+            </div>
+        </div>
+        <div class="form-row py-1">
+            <div class="col">
+                <textarea class="form-control" name="remark" placeholder="Write something" [ngModel]="playList? playList.remark: ''"></textarea>
+            </div>
+        </div>
+        <div class="form-row justify-content-around">
+            <button type="submit" value="submit" id="submit" class="btn col-sm-5 btn-success"
+                [disabled]="playListForm.invalid">Save</button>
+            <button type="button" class="btn col-sm-5 btn-secondary">Cancel</button>
+        </div>
+    </form>
+</div>

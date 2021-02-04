@@ -26,12 +26,11 @@ export class SongService {
   }
 
   createSong(song: Song) {
-    console.log(song)
     return this.webRequestService.post(this.API_SUB_ROOT_URL, song);
   }
 
   updateSong(songId: Number, updatedSong: Song) {
-    return this.webRequestService.patch(`${this.API_SUB_ROOT_URL}/${songId}`, { updatedSong });
+    return this.webRequestService.patch(`${this.API_SUB_ROOT_URL}/${songId}`, updatedSong);
   }
 
   deleteSong(songId: Number) {

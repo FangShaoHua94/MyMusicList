@@ -63,7 +63,8 @@ export class SongDetailComponent implements OnInit {
     if (this.editSong) {
       this.songService.updateSong(this.songId, song).subscribe((updatedSong: Song) => {
         this.song = updatedSong;
-        this.router.navigate(['../'], { relativeTo: this.route });
+        this.router.navigate(['../..'], { relativeTo: this.route });
+        console.log(this.song)
       });
     } else {
       this.songService.createSong(song).subscribe((song: Song) => {

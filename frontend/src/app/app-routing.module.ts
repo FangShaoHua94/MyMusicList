@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { MainPageComponent } from './pages/main-page/main-page.component';
 import { MusicPageComponent } from './pages/music-page/music-page.component';
+import { PlayListDetailComponent } from './pages/play-list-detail/play-list-detail.component';
 import { SongDetailComponent } from './pages/song-detail/song-detail.component';
 
 const routes: Routes = [
@@ -10,8 +11,10 @@ const routes: Routes = [
       { path: '', component: MusicPageComponent },
       { path: 'playLists', component: MusicPageComponent },
       { path: 'playLists/:playListId', component: MusicPageComponent },
+      { path: 'new-playList', component: PlayListDetailComponent},
+      { path: 'edit-playList/:playListId', component: PlayListDetailComponent},
       { path: 'playLists/:playListId/new-song', component: SongDetailComponent },
-      { path: 'playLists/:playListId/:songId', component: SongDetailComponent },
+      { path: 'playLists/:playListId/edit-song/:songId', component: SongDetailComponent },
     ]
   }
 ];
