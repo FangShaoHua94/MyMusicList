@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { PlayList } from 'src/app/models/playList.model';
-import { playListService } from 'src/app/playList.service';
+import { PlayListService } from 'src/app/playList.service';
 
 @Component({
   selector: 'app-play-list',
@@ -10,9 +10,9 @@ import { playListService } from 'src/app/playList.service';
 })
 export class PlayListComponent implements OnInit {
 
-  playLists: PlayList[];
+  playLists: any[];
 
-  constructor(private playListService: playListService) { }
+  constructor(private playListService: PlayListService) { }
 
   ngOnInit(): void {
     this.playListService.getAllPlayLists().subscribe((playLists: PlayList[]) => {

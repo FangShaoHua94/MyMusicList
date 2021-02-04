@@ -1,0 +1,53 @@
+<div class="form-container justify-content-around d-flex p-3">
+    <form #songForm="ngForm" (ngSubmit)="onSubmit(songForm)" class="col-5 p-2 m-2 bg-primary h-80">
+        <h2 class="text-secondary">Add New Song</h2>
+        <div class="form-row py-1">
+            <div class="col">
+                <input type="text" name="title" class="form-control" placeholder="Title" ngModel required>
+            </div>
+            <div class="col">
+                <input type="text" name="artist" class="form-control" placeholder="Artist" ngModel required>
+            </div>
+        </div>
+        <div class="form-row py-1">
+            <div class="col">
+                <input type="text" name="genre" class="form-control" placeholder="Genre" ngModel>
+            </div>
+            <div class="col">
+                <input type="text" name="album" class="form-control" placeholder="Album" ngModel>
+            </div>
+        </div>
+        <div class="form-row py-1">
+            <div class="col">
+                <input type="text" name="youtubeLink" class="form-control" placeholder="Youtube Link" ngModel required>
+            </div>
+        </div>
+        <div class="form-row py-1">
+            <div class="col-6">
+                <input type="text" name="releaseDate" class="form-control" placeholder="Release Date"
+                    onfocus="(this.type='date')" onblur="(this.type='text')" ngModel>
+            </div>
+            <div class="col-3">
+                <input type="number" name="minute" min="0" max="30" class="form-control" placeholder="Minite" ngModel>
+            </div>
+            <div class="col-3">
+                <input type="number" name="second" min="0" max="59" class="form-control" placeholder="Second" ngModel>
+            </div>
+        </div>
+        <div class="form-row py-1">
+            <div class="col">
+                <input type="text" name="tags" class="form-control" placeholder="Tags" ngModel>
+            </div>
+        </div>
+        <div class="form-row py-1">
+            <div class="col">
+                <textarea class="form-control" name="remark" placeholder="Write something" ngModel></textarea>
+            </div>
+        </div>
+        <div class="form-row justify-content-around">
+            <button type="submit" value="submit" id="submit" class="btn col-sm-5 btn-success"
+                [disabled]="songForm.invalid">Add</button>
+            <button type="button" class="btn col-sm-5 btn-secondary" routerLink="..">Cancel</button>
+        </div>
+    </form>
+</div>

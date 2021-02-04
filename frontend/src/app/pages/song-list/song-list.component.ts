@@ -1,7 +1,9 @@
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
+import { PlayList } from 'src/app/models/playList.model';
 import { Song } from 'src/app/models/song.model';
+import { PlayListService } from 'src/app/playList.service';
 import { SongService } from 'src/app/Song.service';
 
 @Component({
@@ -12,10 +14,9 @@ import { SongService } from 'src/app/Song.service';
 export class SongListComponent implements OnInit {
 
   songs: Song[];
+  playList;
 
-  toDisplay: boolean = false;
-
-  constructor(private songService: SongService, private route: ActivatedRoute) { }
+  constructor(private songService: SongService, private playListService: PlayListService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
 
@@ -23,6 +24,9 @@ export class SongListComponent implements OnInit {
       if (params.playListId) {
         this.songService.getSongs(params.playListId).subscribe((songs: Song[]) => {
           this.songs = songs;
+        })
+        this.playListService.getPlayList(params.playListId).subscribe((playList: PlayList) => {
+          this.playList = playList;
         })
       } else {
         this.songService.getAllSongs().subscribe((songs: Song[]) => {
@@ -38,14 +42,15 @@ export class SongListComponent implements OnInit {
 
   }
 
-  onDelelteSongClick() {
-    //open modal for confirmation
-
+  onDeleteSongClick(song: any) {
+    //open alert for confirmation
+    this.playList.songList = this.playList.songList.filter(songId => songId !== song._id);
+    this.playListService.updatePlayList(this.playList._id, this.playList).subscribe((playList: PlayList) => {
+      this.playList = playList;
+      this.songService.getSongs(this.playList._id).subscribe((songs: Song[]) => {
+        this.songs = songs;
+      })
+    });
+    
   }
-
-  openModal() {
-    this.toDisplay = !this.toDisplay;
-  }
-
-
 }

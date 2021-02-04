@@ -10,8 +10,7 @@ import { MainPageComponent } from './pages/main-page/main-page.component';
 import { MusicPageComponent } from './pages/music-page/music-page.component';
 import { PlayListComponent } from './pages/play-list/play-list.component';
 import { SongListComponent } from './pages/song-list/song-list.component';
-import { SongDetailComponent } from './modals/song-detail/song-detail.component';
-
+import { SongDetailComponent} from './pages/song-detail/song-detail.component';
 
 @NgModule({
   declarations: [

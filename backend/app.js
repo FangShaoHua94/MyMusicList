@@ -18,6 +18,8 @@ mongoose.connect('mongodb://localhost:27017/MusicSpace', { useNewUrlParser: true
     .then(() => console.log("Connected to mongodb successfully."))
     .catch((e) => console.log("error while attemping to connect to mongodb"));
 
+mongoose.set('useFindAndModify', false);
+
 // user route will be handle using auth in headers
 
 // mySong -> display all Song and Song playLists
@@ -46,12 +48,7 @@ app.get('/mySongs/:songId', (req, res) => {
 })
 
 app.post('/mySongs', (req, res) => {
-    console.log('posting')
-    const song = req.body;
-    console.log(song)
-    const newSong = new Song(song);
-    console.log(newSong)
-
+    const newSong = new Song(req.body);
     newSong.save().then((allSongs) => {
         res.send(allSongs);
     }).catch((error) => {
@@ -88,7 +85,7 @@ app.get('/myPlayLists', (req, res) => {
 })
 
 app.get('/myPlayLists/:playListId', (req, res) => {
-    PlayList.find(
+    PlayList.findOne(
         { _id: req.params.playListId }
     ).then((playList) => {
         res.send(playList);
@@ -102,7 +99,7 @@ app.get('/myPlayLists/:playListId/mySongs', (req, res) => {
         { _id: req.params.playListId }
     ).then((playList) => {
         Song.find({
-            '_id': { $in: playList.songList}
+            '_id': { $in: playList.songList }
         }).then((songs) => {
             res.send(songs);
         }).catch((error) => {
@@ -124,9 +121,10 @@ app.post('/myPlayLists', (req, res) => {
 })
 
 app.patch('/myPlayLists/:playListId', (req, res) => {
-    PlayList.findOneAndUpdate({ _id: req.params.playListId }, { $set: req.body })
-        .then(() => {
-            res.send({ 'message': 'updated successfully' });
+    console.log(req.body);
+    PlayList.findOneAndUpdate({ _id: req.params.playListId }, { $set: req.body }, {new: true})
+        .then((updatedPlayList) => {
+            res.send(updatedPlayList);
         }).catch((error) => {
             res.send(error);
         })

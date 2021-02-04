@@ -7,8 +7,7 @@
                 <th scope="col">Artist</th>
                 <th scope="col">Duration</th>
                 <th scope="col">
-                    <button type="button" class="btn btn-success py-0 text-nowrap" (click)="openModal()">+ Song</button>
-                    <app-song-detail [(toDisplay)]="toDisplay"></app-song-detail>
+                    <button type="button" class="btn btn-success py-0 text-nowrap" routerLink="./new-song">+ Song</button>
                 </th>
             </tr>
         </thead>
@@ -21,7 +20,7 @@
                 <td class="icons">
                     <a href="{{song.youtubeLink}}"><i class="fab fa-youtube"></i></a>
                     <i class="fas fa-edit"></i>
-                    <i class="fas fa-trash"></i>
+                    <i class="fas fa-trash" (click)="onDeleteSongClick(song)"></i>
                 </td>
             </tr>
         </tbody>
