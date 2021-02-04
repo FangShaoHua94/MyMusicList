@@ -5,6 +5,7 @@ import { PlayListService } from 'src/app/playList.service';
 import { SongService } from 'src/app/Song.service';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { PlayList } from 'src/app/models/playList.model';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 @Component({
   selector: 'app-song-detail',
@@ -16,20 +17,32 @@ export class SongDetailComponent implements OnInit {
   playListId;
   playList;
   song;
+  songId;
+  editSong = false;
+  title = "Add New Song";
 
   constructor(private songService: SongService, private route: ActivatedRoute, private router: Router, private playListService: PlayListService) { }
 
   ngOnInit(): void {
     this.route.params.subscribe(
       (params: Params) => {
-        this.playListId = params.playListId;
+        if (params.playListId) {
+          this.playListId = params.playListId;
+          this.playListService.getPlayList(this.playListId).subscribe((playList: PlayList) => {
+            this.playList = playList;
+          })
+        }
+        if (params.songId) {
+          this.songId = params.songId;
+          this.editSong = true;
+          this.title = "Edit Song";
+          this.songService.getSong(this.songId).subscribe((song: Song) => {
+            this.song = song;
+            console.log(this.song)
+          })
+        }
       }
     );
-    this.playListService.getPlayList(this.playListId).subscribe((playList: PlayList) => {
-      this.playList = playList;
-      console.log(playList)
-      console.log(playList.songList);
-    })
   }
 
   onSubmit(form: NgForm) {
@@ -47,14 +60,19 @@ export class SongDetailComponent implements OnInit {
       album: form.value.album,
       numPlayed: form.value.numPlayed,
     }
-    console.log(song);
-    this.songService.createSong(song).subscribe((song: Song) => {
-      this.playList.songList.push(song._id);
-      this.song = song;
-      this.playListService.updatePlayList(this.playListId, this.playList).subscribe((playList: PlayList) => {
-        this.playList = playList;
+    if (this.editSong) {
+      this.songService.updateSong(this.songId, song).subscribe((updatedSong: Song) => {
+        this.song = updatedSong;
         this.router.navigate(['../'], { relativeTo: this.route });
       });
-    });
+    } else {
+      this.songService.createSong(song).subscribe((song: Song) => {
+        this.playList.songList.push(song._id);
+        this.playListService.updatePlayList(this.playListId, this.playList).subscribe((playList: PlayList) => {
+          this.playList = playList;
+          this.router.navigate(['../'], { relativeTo: this.route });
+        });
+      });
+    }
   }
 }

@@ -7,7 +7,8 @@
                 <th scope="col">Artist</th>
                 <th scope="col">Duration</th>
                 <th scope="col">
-                    <button type="button" class="btn btn-success py-0 text-nowrap" routerLink="./new-song">+ Song</button>
+                    <button type="button" class="btn btn-success py-0 text-nowrap" routerLink="./new-song">+
+                        Song</button>
                 </th>
             </tr>
         </thead>
@@ -19,11 +20,10 @@
                 <td>{{ song.duration }}</td>
                 <td class="icons">
                     <a href="{{song.youtubeLink}}"><i class="fab fa-youtube"></i></a>
-                    <i class="fas fa-edit"></i>
-                    <i class="fas fa-trash" (click)="onDeleteSongClick(song)"></i>
+                    <a><i class="fas fa-edit" routerLink="./{{song._id}}"></i></a>
+                    <a><i class="fas fa-trash" (click)="onDeleteSongClick(song)"></i></a>
                 </td>
             </tr>
         </tbody>
     </table>
 </div>
-

@@ -38,10 +38,10 @@ app.get('/mySongs', (req, res) => {
 })
 
 app.get('/mySongs/:songId', (req, res) => {
-    Song.find(
+    Song.findOne(
         { _id: req.params.songId }
-    ).then((mySongs) => {
-        res.send(mySongs);
+    ).then((mySong) => {
+        res.send(mySong);
     }).catch((error) => {
         res.status(404).send(error);
     })

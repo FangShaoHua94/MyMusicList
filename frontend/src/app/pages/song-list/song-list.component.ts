@@ -13,13 +13,12 @@ import { SongService } from 'src/app/Song.service';
 })
 export class SongListComponent implements OnInit {
 
-  songs: Song[];
+  songs;
   playList;
 
   constructor(private songService: SongService, private playListService: PlayListService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
-
     this.route.params.subscribe((params: Params) => {
       if (params.playListId) {
         this.songService.getSongs(params.playListId).subscribe((songs: Song[]) => {
@@ -43,7 +42,7 @@ export class SongListComponent implements OnInit {
   }
 
   onDeleteSongClick(song: any) {
-    //open alert for confirmation
+    // need open alert for confirmation
     this.playList.songList = this.playList.songList.filter(songId => songId !== song._id);
     this.playListService.updatePlayList(this.playList._id, this.playList).subscribe((playList: PlayList) => {
       this.playList = playList;
@@ -51,6 +50,5 @@ export class SongListComponent implements OnInit {
         this.songs = songs;
       })
     });
-    
   }
 }

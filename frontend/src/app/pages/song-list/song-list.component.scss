@@ -12,6 +12,7 @@
 
         &:hover {
             color: lighten($secondary, 10%);
+            cursor: pointer;
         }
     }
 
@@ -22,5 +23,6 @@
     tbody {
         font-family: 'ZCOOL QingKe HuangYou', cursive;
     }
+
 
 }

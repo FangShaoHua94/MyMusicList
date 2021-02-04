@@ -21,6 +21,10 @@ export class SongService {
     return this.webRequestService.get(`myPlayLists/${playListId}/${this.API_SUB_ROOT_URL}`);
   }
 
+  getSong(songId: Number) {
+    return this.webRequestService.get(`${this.API_SUB_ROOT_URL}/${songId}`);
+  }
+
   createSong(song: Song) {
     console.log(song)
     return this.webRequestService.post(this.API_SUB_ROOT_URL, song);

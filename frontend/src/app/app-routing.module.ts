@@ -11,7 +11,7 @@ const routes: Routes = [
       { path: 'playLists', component: MusicPageComponent },
       { path: 'playLists/:playListId', component: MusicPageComponent },
       { path: 'playLists/:playListId/new-song', component: SongDetailComponent },
-      { path: 'playLists/:playListId/:Songid', component: SongDetailComponent },
+      { path: 'playLists/:playListId/:songId', component: SongDetailComponent },
     ]
   }
 ];

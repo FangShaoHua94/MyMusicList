@@ -1,31 +1,31 @@
 <div class="form-container justify-content-around d-flex p-3">
     <form #songForm="ngForm" (ngSubmit)="onSubmit(songForm)" class="col-5 p-2 m-2 bg-primary h-80">
-        <h2 class="text-secondary">Add New Song</h2>
+        <h2 class="text-secondary">{{title}}</h2>
         <div class="form-row py-1">
             <div class="col">
-                <input type="text" name="title" class="form-control" placeholder="Title" ngModel required>
+                <input type="text" name="title" class="form-control" placeholder="Title" [ngModel]="song? song.title: ''" required>
             </div>
             <div class="col">
-                <input type="text" name="artist" class="form-control" placeholder="Artist" ngModel required>
+                <input type="text" name="artist" class="form-control" placeholder="Artist" [ngModel]="song? song.artist: ''" required>
             </div>
         </div>
         <div class="form-row py-1">
             <div class="col">
-                <input type="text" name="genre" class="form-control" placeholder="Genre" ngModel>
+                <input type="text" name="genre" class="form-control" placeholder="Genre" [ngModel]="song? song.genre: ''" >
             </div>
             <div class="col">
-                <input type="text" name="album" class="form-control" placeholder="Album" ngModel>
+                <input type="text" name="album" class="form-control" placeholder="Album" [ngModel]="song? song.album: ''">
             </div>
         </div>
         <div class="form-row py-1">
             <div class="col">
-                <input type="text" name="youtubeLink" class="form-control" placeholder="Youtube Link" ngModel required>
+                <input type="text" name="youtubeLink" class="form-control" placeholder="Youtube Link" [ngModel]="song? song.youtubeLink: ''" required>
             </div>
         </div>
         <div class="form-row py-1">
             <div class="col-6">
                 <input type="text" name="releaseDate" class="form-control" placeholder="Release Date"
-                    onfocus="(this.type='date')" onblur="(this.type='text')" ngModel>
+                    onfocus="(this.type='date')" onblur="(this.type='text')" [ngModel]="song? song.releaseDate: ''">
             </div>
             <div class="col-3">
                 <input type="number" name="minute" min="0" max="30" class="form-control" placeholder="Minite" ngModel>
@@ -36,17 +36,17 @@
         </div>
         <div class="form-row py-1">
             <div class="col">
-                <input type="text" name="tags" class="form-control" placeholder="Tags" ngModel>
+                <input type="text" name="tags" class="form-control" placeholder="Tags" [ngModel]="song? song.tags: ''">
             </div>
         </div>
         <div class="form-row py-1">
             <div class="col">
-                <textarea class="form-control" name="remark" placeholder="Write something" ngModel></textarea>
+                <textarea class="form-control" name="remark" placeholder="Write something" [ngModel]="song? song.remark: ''"></textarea>
             </div>
         </div>
         <div class="form-row justify-content-around">
             <button type="submit" value="submit" id="submit" class="btn col-sm-5 btn-success"
-                [disabled]="songForm.invalid">Add</button>
+                [disabled]="songForm.invalid">Save</button>
             <button type="button" class="btn col-sm-5 btn-secondary" routerLink="..">Cancel</button>
         </div>
     </form>
