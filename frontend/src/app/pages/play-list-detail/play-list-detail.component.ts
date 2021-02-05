@@ -14,6 +14,7 @@ export class PlayListDetailComponent implements OnInit {
   title = "Add Play List";
   playList;
   editPlayList = false;
+  cancelRouterLink = '/playLists';
 
   constructor(private route: ActivatedRoute, private router: Router, private playListService: PlayListService) { }
 
@@ -25,6 +26,7 @@ export class PlayListDetailComponent implements OnInit {
             this.playList = playList;
             this.editPlayList = true;
             this.title = "Edit Play List";
+            this.cancelRouterLink = `/playLists/${params.playListId}`;
           })
         }
       })
@@ -37,13 +39,12 @@ export class PlayListDetailComponent implements OnInit {
       remark: form.value.remark,
     }
     if (this.editPlayList) {
-      // this.songService.updateSong(this.songId, song).subscribe((updatedSong: Song) => {
-      //   this.song = updatedSong;
-      //   this.router.navigate(['../'], { relativeTo: this.route });
-      // });
+      this.playListService.updatePlayList(this.playList._id, playList).subscribe((playList: PlayList) => {
+        this.router.navigate([`/playLists/${playList._id}`]);
+      });
     } else {
-      this.playListService.createPlayList(playList).subscribe((playLists: PlayList[]) => {
-        this.router.navigate(['/playLists']);
+      this.playListService.createPlayList(playList).subscribe((playList: PlayList) => {
+        this.router.navigate([`/playLists/${playList._id}`]);
       });
     }
   }

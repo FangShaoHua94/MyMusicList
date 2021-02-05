@@ -35,12 +35,7 @@ export class SongListComponent implements OnInit {
     });
   }
 
-  onEditSongClick() {
-    //open modal with filled field
-
-  }
-
-  onDeleteSongClick(song: any) {
+  onClickDeleteSong(song: any) {
     // need open alert for confirmation
     this.playList.songList = this.playList.songList.filter(songId => songId !== song._id);
     this.playListService.updatePlayList(this.playList._id, this.playList).subscribe((playList: PlayList) => {

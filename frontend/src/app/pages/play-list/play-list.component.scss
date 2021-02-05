@@ -46,6 +46,15 @@
                     }
                 }
             }
+
+            .fas {
+                color: $secondary;
+        
+                &:hover {
+                    color: lighten($secondary, 10%);
+                    cursor: pointer;
+                }
+            }
         }
     }
 }

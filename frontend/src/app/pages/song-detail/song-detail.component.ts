@@ -5,7 +5,6 @@ import { PlayListService } from 'src/app/playList.service';
 import { SongService } from 'src/app/Song.service';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { PlayList } from 'src/app/models/playList.model';
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 @Component({
   selector: 'app-song-detail',
@@ -38,7 +37,6 @@ export class SongDetailComponent implements OnInit {
           this.title = "Edit Song";
           this.songService.getSong(this.songId).subscribe((song: Song) => {
             this.song = song;
-            console.log(this.song)
           })
         }
       }

@@ -49,8 +49,8 @@ app.get('/mySongs/:songId', (req, res) => {
 
 app.post('/mySongs', (req, res) => {
     const newSong = new Song(req.body);
-    newSong.save().then((allSongs) => {
-        res.send(allSongs);
+    newSong.save().then((addedSong) => {
+        res.send(addedSong);
     }).catch((error) => {
         res.send(error);
     })
@@ -113,15 +113,14 @@ app.get('/myPlayLists/:playListId/mySongs', (req, res) => {
 app.post('/myPlayLists', (req, res) => {
     const playList = req.body;
     const newPlayList = new PlayList(playList);
-    newPlayList.save().then((allPlayList) => {
-        res.send(allPlayList);
+    newPlayList.save().then((addedPlayList) => {
+        res.send(addedPlayList);
     }).catch((error) => {
         res.send(error);
     })
 })
 
 app.patch('/myPlayLists/:playListId', (req, res) => {
-    console.log(req.body);
     PlayList.findOneAndUpdate({ _id: req.params.playListId }, { $set: req.body }, {new: true})
         .then((updatedPlayList) => {
             res.send(updatedPlayList);

@@ -21,7 +21,7 @@
                 <td class="icons">
                     <a href="{{song.youtubeLink}}"><i class="fab fa-youtube"></i></a>
                     <a><i class="fas fa-edit" routerLink="./edit-song/{{song._id}}"></i></a>
-                    <a><i class="fas fa-trash" (click)="onDeleteSongClick(song)"></i></a>
+                    <a><i class="fas fa-trash" (click)="onClickDeleteSong(song)"></i></a>
                 </td>
             </tr>
         </tbody>
