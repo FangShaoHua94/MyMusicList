@@ -4,10 +4,6 @@ const playListSchema = mongoose.Schema({
     title: String,
     genre: String,
     remark: String,
-    duration:{ 
-        type: String,
-        default: '0:00',
-    },
     songList: [String],
     createdAt: {
         type: Date,

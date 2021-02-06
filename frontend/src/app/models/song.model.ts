@@ -5,8 +5,13 @@ export class Song {
     releaseDate: Date;
     youtubeLink: String;
     remark: String;
-    duration: String;
+    duration: Duration;
     tags: [String];
     album: String;
     numPlayed: Number;
+}
+
+export class Duration {
+    minutes: Number;
+    seconds: Number;
 }

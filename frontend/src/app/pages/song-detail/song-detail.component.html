@@ -28,10 +28,10 @@
                     onfocus="(this.type='date')" onblur="(this.type='text')" [ngModel]="song? song.releaseDate: ''">
             </div>
             <div class="col-3">
-                <input type="number" name="minute" min="0" max="30" class="form-control" placeholder="Minite" ngModel>
+                <input type="number" name="minute" min="0" max="59" class="form-control" placeholder="Minite" [ngModel]="song? song.duration.minutes: ''">
             </div>
             <div class="col-3">
-                <input type="number" name="second" min="0" max="59" class="form-control" placeholder="Second" ngModel>
+                <input type="number" name="second" min="0" max="59" class="form-control" placeholder="Second" [ngModel]="song? song.duration.seconds: ''">
             </div>
         </div>
         <div class="form-row py-1">

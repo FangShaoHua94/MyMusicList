@@ -7,7 +7,20 @@ const songSchema = mongoose.Schema({
     releaseDate: Date,
     youtubeLink: String,
     remark: String,
-    duration: String,
+    duration: {
+        minutes: {
+            type: Number, 
+            min: 0, 
+            max: 59,
+            default: 0,
+        },
+        seconds: {
+            type: Number, 
+            min: 0, 
+            max: 59,
+            default: 0,
+        }
+    },
     tags: [String],
     createdAt: {
         type: Date,

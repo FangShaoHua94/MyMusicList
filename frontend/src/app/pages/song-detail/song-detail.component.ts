@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Song } from 'src/app/models/song.model';
+import { Duration, Song } from 'src/app/models/song.model';
 import { PlayListService } from 'src/app/playList.service';
 import { SongService } from 'src/app/Song.service';
 import { ActivatedRoute, Params, Router } from '@angular/router';
@@ -44,8 +44,13 @@ export class SongDetailComponent implements OnInit {
   }
 
   onSubmit(form: NgForm) {
-    const minute = form.value.minute ? form.value.minute : '0';
-    const second = form.value.second ? form.value.second : '00';
+    const minutes:Number = form.value.minute ? form.value.minute : 0;
+    const seconds:Number = form.value.second ? form.value.second : 0;
+    const tags = form.value.tags ? form.value.tags.toString().split(',') : [];
+    const duration: Duration = {
+      minutes: minutes,
+      seconds: seconds,
+    }
     const song: Song = {
       title: form.value.title,
       artist: form.value.artist,
@@ -53,8 +58,8 @@ export class SongDetailComponent implements OnInit {
       releaseDate: form.value.releaseDate,
       youtubeLink: form.value.youtubeLink,
       remark: form.value.remark,
-      duration: minute + ':' + second,
-      tags: form.value.tags.split(','),
+      duration: duration,
+      tags: tags,
       album: form.value.album,
       numPlayed: form.value.numPlayed,
     }
@@ -62,7 +67,6 @@ export class SongDetailComponent implements OnInit {
       this.songService.updateSong(this.songId, song).subscribe((updatedSong: Song) => {
         this.song = updatedSong;
         this.router.navigate(['../..'], { relativeTo: this.route });
-        console.log(this.song)
       });
     } else {
       this.songService.createSong(song).subscribe((song: Song) => {
