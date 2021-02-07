@@ -12,6 +12,8 @@ import { PlayListComponent } from './pages/play-list/play-list.component';
 import { SongListComponent } from './pages/song-list/song-list.component';
 import { SongDetailComponent} from './pages/song-detail/song-detail.component';
 import { PlayListDetailComponent } from './pages/play-list-detail/play-list-detail.component';
+import { LoginPageComponent } from './pages/login-page/login-page.component';
+import { SignUpPageComponent } from './pages/sign-up-page/sign-up-page.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +24,8 @@ import { PlayListDetailComponent } from './pages/play-list-detail/play-list-deta
     SongListComponent,
     SongDetailComponent,
     PlayListDetailComponent,
+    LoginPageComponent,
+    SignUpPageComponent,
   ],
   imports: [
     BrowserModule,

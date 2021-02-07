@@ -1,0 +1,22 @@
+<div class="form-container justify-content-around d-flex p-3">
+    <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)" class="col-5 p-2 m-2 bg-primary h-80">
+        <h2 class="text-secondary">Login</h2>
+        <div class="form-row py-1">
+            <div class="col">
+                <label><i class="fas fa-user mr-2"></i>Username</label>
+                <input type="text" name="username" class="form-control" placeholder="Username" required>
+            </div>
+        </div>
+        <div class="form-row py-1">
+            <div class="col">
+                <label><i class="fas fa-lock mr-2"></i>Password</label>
+                <input type="password" name="password" class="form-control" placeholder="Password">
+            </div>
+        </div>
+        <div class="form-row justify-content-around">
+            <button type="submit" value="submit" id="submit" class="btn col-sm-5 btn-success"
+                [disabled]="loginForm.invalid">Login</button>
+            <button type="button" class="btn col-sm-5 btn-secondary" >Cancel</button>
+        </div>
+    </form>
+</div>
