@@ -4,14 +4,42 @@
         <div class="form-row py-1">
             <div class="col">
                 <label><i class="fas fa-user mr-2"></i>Email</label>
-                <input type="email" name="email" class="form-control" placeholder="Email" ngModel required>
+                <input #email="ngModel" type="email" name="email" class="form-control" placeholder="Email"
+                    pattern="[^ @]*@[^ @]*" ngModel required>
+            </div>
+        </div>
+        <div *ngIf="email.touched && email.invalid" class="alert alert-warning" role="alert">
+            <div *ngIf="email.errors.required">
+                Email is required.
+            </div>
+            <div *ngIf="email.errors.pattern">
+                Incorrect format: abc@xyz.com
             </div>
         </div>
         <div class="form-row py-1">
             <div class="col">
                 <label><i class="fas fa-lock mr-2"></i>Password</label>
-                <input type="password" name="password" class="form-control" placeholder="Password" ngModel required>
+                <div class="input-group">
+                    <input #password="ngModel" [type]="revealPassword? 'text':'password'" name="password"
+                        class="form-control" placeholder="Password" minlength=8 ngModel required>
+                    <div class="input-group-append">
+                        <div class="input-group-text" (click)="togglePasswordReveal()"><i
+                                [ngClass]="revealPassword? 'fa-eye': 'fa-eye-slash'" class="far"></i></div>
+                    </div>
+                </div>
             </div>
+        </div>
+        <div *ngIf="password.touched && password.invalid" class="alert alert-warning" role="alert">
+            <div *ngIf="password.errors.required">
+                Password is required.
+            </div>
+            <div *ngIf="password.errors.minlength">
+                Password must be at least 8 characters long.
+            </div>
+        </div>
+        <div *ngIf="!validLogin" class="alert alert-warning" role="alert">
+            <div><i class="fas fa-exclamation-triangle mr-2"></i>Invalid login.</div>
+            <div>Please make sure you have entered correct email and password.</div>
         </div>
         <div class="form-row justify-content-around">
             <button type="submit" value="submit" id="submit" class="btn col-sm-5 btn-success"

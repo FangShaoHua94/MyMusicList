@@ -20,6 +20,10 @@ $modal-content-border-color:        rgba($secondary, 1);
 $modal-content-box-shadow-xs:       0 .25rem .5rem rgba($secondary, .5);
 $modal-content-box-shadow-sm-up:    0 .5rem 1rem rgba($secondary, .5);
 
+$input-border-color:                    $secondary;
+$input-focus-border-color:              $green;
+$input-border-width:                    0.3rem;
+
 
 
 
@@ -30,6 +34,10 @@ body {
 
 label {
     color: $secondary;
+}
+
+button:disabled {
+    cursor: not-allowed;
 }
 
 ::-webkit-scrollbar {

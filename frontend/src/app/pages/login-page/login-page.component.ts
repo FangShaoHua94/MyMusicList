@@ -10,14 +10,24 @@ import { AuthService } from 'src/app/auth.service';
 })
 export class LoginPageComponent implements OnInit {
 
+  revealPassword = false;
+  validLogin = true;
+
   constructor(private authSerivce: AuthService) { }
 
   ngOnInit(): void {
   }
 
+  togglePasswordReveal() {
+    this.revealPassword = !this.revealPassword;
+  }
+
   onSubmit(form: NgForm) {
+    this.validLogin = false;
     this.authSerivce.login(form.value.email, form.value.password).subscribe((res: HttpResponse<any>) => {
-      console.log(res);
+      if(res.status !== 400) {
+        this.validLogin = true;
+      }
     })
   }
 

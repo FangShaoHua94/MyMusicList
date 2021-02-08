@@ -10,14 +10,26 @@ import { AuthService } from 'src/app/auth.service';
 })
 export class SignUpPageComponent implements OnInit {
 
+  passwordMatch = true;
+  revealPassword = false;
+
   constructor(private authSerivce: AuthService) { }
 
   ngOnInit(): void {
   }
 
+  togglePasswordReveal() {
+    this.revealPassword = !this.revealPassword;
+  }
+
   onSubmit(form: NgForm) {
-    this.authSerivce.signup(form.value.email, form.value.password).subscribe((res: HttpResponse<any>) => {
-      console.log(res);
-    })
+    if (form.value.password === form.value.reconfirmPassword) {
+      this.passwordMatch = true;
+      this.authSerivce.signup(form.value.email, form.value.password).subscribe((res: HttpResponse<any>) => {
+        console.log(res);
+      })
+    }else {
+      this.passwordMatch = false;
+    }
   }
 }
