@@ -3,26 +3,27 @@
         <h2 class="text-secondary">Sign up</h2>
         <div class="form-row py-1">
             <div class="col">
-                <label><i class="fas fa-user mr-2"></i>Username</label>
-                <input type="text" name="username" class="form-control" placeholder="Username" required>
+                <label><i class="fas fa-user mr-2"></i>Email</label>
+                <input type="email" name="email" class="form-control" placeholder="Email" ngModel required>
             </div>
         </div>
         <div class="form-row py-1">
             <div class="col">
                 <label><i class="fas fa-lock mr-2"></i>Password</label>
-                <input type="password" name="password" class="form-control" placeholder="Password">
+                <input type="password" name="password" class="form-control" placeholder="Password" ngModel required>
             </div>
         </div>
         <div class="form-row py-1">
             <div class="col">
                 <label><i class="fas fa-lock mr-2"></i>Reconfirm Your Password</label>
-                <input type="password" name="reconfirmPassword" class="form-control" placeholder="Password">
+                <input type="password" name="reconfirmPassword" class="form-control" placeholder="Password" ngModel required>
             </div>
         </div>
+
         <div class="form-row justify-content-around">
             <button type="submit" value="submit" id="submit" class="btn col-sm-5 btn-success"
                 [disabled]="signUpForm.invalid">Sign up</button>
-            <button type="button" class="btn col-sm-5 btn-secondary" >Cancel</button>
+            <button type="button" class="btn col-sm-5 btn-secondary" routerLink="/login">Go to Login page</button>
         </div>
     </form>
 </div>

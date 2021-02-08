@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Params } from '@angular/router';
+import { AuthService } from 'src/app/auth.service';
 
 @Component({
   selector: 'app-main-page',
@@ -7,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainPageComponent implements OnInit {
 
-  constructor() { }
+  isLogin = false;
+
+  constructor(private authService: AuthService) {
+  }
 
   ngOnInit(): void {
   }
 
+  logout() {
+    this.authService.logout();
+  }
 }

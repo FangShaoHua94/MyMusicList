@@ -69,7 +69,7 @@ export class SongDetailComponent implements OnInit {
         this.router.navigate(['../..'], { relativeTo: this.route });
       });
     } else {
-      this.songService.createSong(song).subscribe((song: Song) => {
+      this.songService.createSong(song).subscribe((song: any) => {
         this.playList.songList.push(song._id);
         this.playListService.updatePlayList(this.playListId, this.playList).subscribe((playList: PlayList) => {
           this.playList = playList;

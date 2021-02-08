@@ -9,6 +9,10 @@ const playListSchema = mongoose.Schema({
         type: Date,
         default: new Date()
     },
+    _userId: {
+        type: mongoose.Types.ObjectId,
+        required: true,
+    }
 },
     {
         collection: 'PlayList'

@@ -39,11 +39,11 @@ export class PlayListDetailComponent implements OnInit {
       remark: form.value.remark,
     }
     if (this.editPlayList) {
-      this.playListService.updatePlayList(this.playList._id, playList).subscribe((playList: PlayList) => {
+      this.playListService.updatePlayList(this.playList._id, playList).subscribe((playList: any) => {
         this.router.navigate([`/playLists/${playList._id}`]);
       });
     } else {
-      this.playListService.createPlayList(playList).subscribe((playList: PlayList) => {
+      this.playListService.createPlayList(playList).subscribe((playList: any) => {
         this.router.navigate([`/playLists/${playList._id}`]);
       });
     }

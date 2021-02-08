@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 
 
@@ -14,6 +14,7 @@ import { SongDetailComponent} from './pages/song-detail/song-detail.component';
 import { PlayListDetailComponent } from './pages/play-list-detail/play-list-detail.component';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { SignUpPageComponent } from './pages/sign-up-page/sign-up-page.component';
+import { WebRequestInterceptor } from './web-request.interceptor.service';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,9 @@ import { SignUpPageComponent } from './pages/sign-up-page/sign-up-page.component
     HttpClientModule,
     FormsModule,
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: WebRequestInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

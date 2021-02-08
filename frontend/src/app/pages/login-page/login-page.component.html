@@ -3,20 +3,20 @@
         <h2 class="text-secondary">Login</h2>
         <div class="form-row py-1">
             <div class="col">
-                <label><i class="fas fa-user mr-2"></i>Username</label>
-                <input type="text" name="username" class="form-control" placeholder="Username" required>
+                <label><i class="fas fa-user mr-2"></i>Email</label>
+                <input type="email" name="email" class="form-control" placeholder="Email" ngModel required>
             </div>
         </div>
         <div class="form-row py-1">
             <div class="col">
                 <label><i class="fas fa-lock mr-2"></i>Password</label>
-                <input type="password" name="password" class="form-control" placeholder="Password">
+                <input type="password" name="password" class="form-control" placeholder="Password" ngModel required>
             </div>
         </div>
         <div class="form-row justify-content-around">
             <button type="submit" value="submit" id="submit" class="btn col-sm-5 btn-success"
                 [disabled]="loginForm.invalid">Login</button>
-            <button type="button" class="btn col-sm-5 btn-secondary" >Cancel</button>
+            <button type="button" class="btn col-sm-5 btn-secondary" routerLink="/sign-up">Go to sign up page</button>
         </div>
     </form>
 </div>
