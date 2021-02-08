@@ -1,10 +1,11 @@
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { PlayList } from 'src/app/models/playList.model';
 import { Song } from 'src/app/models/song.model';
 import { PlayListService } from 'src/app/playList.service';
 import { SongService } from 'src/app/Song.service';
+import { DomSanitizer } from '@angular/platform-browser';
+
 
 @Component({
   selector: 'app-song-list',
@@ -15,8 +16,13 @@ export class SongListComponent implements OnInit {
 
   songs;
   playList;
+  selectedSong = null;
 
-  constructor(private songService: SongService, private playListService: PlayListService, private route: ActivatedRoute, private router: Router) { }
+  constructor(private songService: SongService,
+    private playListService: PlayListService,
+    private route: ActivatedRoute,
+    private router: Router,
+    private _sanitizer: DomSanitizer) { }
 
   ngOnInit(): void {
     this.route.params.subscribe((params: Params) => {
@@ -34,6 +40,29 @@ export class SongListComponent implements OnInit {
       }
     });
   }
+
+  selectedSongClick(song) {
+    if (this.selectedSong === song) {
+      this.selectedSong = null;
+    } else {
+      this.selectedSong = null;
+      this.selectedSong = song;
+    }
+  }
+  // playSong(videoURL: string) {
+  //   this.youtubeLink = videoURL;
+  // }
+
+
+  getVideoId(videoURL: string) {
+    return videoURL.slice(videoURL.indexOf('watch?v=') + 8, 19 + videoURL.indexOf('watch?v='));
+  }
+
+  // convertUrl(videoURL: string) {
+  //   let videoId = videoURL.slice(videoURL.indexOf('watch?v=') + 8, 19 + videoURL.indexOf('watch?v='))
+  //   let modifiedUrl = "https://www.youtube.com/embed/" + videoId + "?autoplay=1"; 
+  //   return this._sanitizer.bypassSecurityTrustResourceUrl(modifiedUrl);;
+  // }
 
   onClickDeleteSong(song: any) {
     // need open alert for confirmation

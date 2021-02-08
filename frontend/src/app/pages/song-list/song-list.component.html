@@ -12,8 +12,8 @@
                 </th>
             </tr>
         </thead>
-        <tbody *ngFor="let song of songs; let i = index">
-            <tr>
+        <tbody>
+            <tr *ngFor="let song of songs; let i = index" (click)="selectedSongClick(song)" [ngClass]="selectedSong == song ? 'selected' : ''">
                 <th scope="row">{{ i+1 }}</th>
                 <td>{{ song.title }}</td>
                 <td>{{ song.artist }}</td>
@@ -28,3 +28,8 @@
         </tbody>
     </table>
 </div>
+<youtube-player *ngIf="selectedSong" height="0px" width="0px"
+    videoId="{{getVideoId(selectedSong.youtubeLink)}}" 
+    suggestedQuality="highres"
+    [playerVars]="{'autoplay': 1, 'origin': 'http://localhost:4200'}">
+</youtube-player>

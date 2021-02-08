@@ -24,5 +24,15 @@
         font-family: 'ZCOOL QingKe HuangYou', cursive;
     }
 
+    tr {
+        &:hover {
+            cursor: pointer;
+        }
+        &.selected {
+            background-color: lighten($primary, 20%);
+        }
+    } 
+
+    
 
 }

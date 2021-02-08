@@ -10,11 +10,13 @@ import { MainPageComponent } from './pages/main-page/main-page.component';
 import { MusicPageComponent } from './pages/music-page/music-page.component';
 import { PlayListComponent } from './pages/play-list/play-list.component';
 import { SongListComponent } from './pages/song-list/song-list.component';
-import { SongDetailComponent} from './pages/song-detail/song-detail.component';
+import { SongDetailComponent } from './pages/song-detail/song-detail.component';
 import { PlayListDetailComponent } from './pages/play-list-detail/play-list-detail.component';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { SignUpPageComponent } from './pages/sign-up-page/sign-up-page.component';
 import { WebRequestInterceptor } from './web-request.interceptor.service';
+import { YouTubePlayerModule } from '@angular/youtube-player';
+
 
 @NgModule({
   declarations: [
@@ -33,6 +35,7 @@ import { WebRequestInterceptor } from './web-request.interceptor.service';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    YouTubePlayerModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: WebRequestInterceptor, multi: true }
